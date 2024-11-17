@@ -49,7 +49,7 @@ YTlink = st.text_input("Enter Video URL : ",key="input")
 pattern = r'(https?://)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)/(watch\?v=|embed\/|v\/|e\/|watch\?v%3D|.+\/)([a-zA-Z0-9_-]{11})' ##regex for yt video link
 if st.button("Analyse") :
     if re.match(pattern,YTlink):
-        video_id = YTlink.split("=")[1]
+        video_id = YTlink.split("=")[1].split("&")[0]
         st.image(f"https://img.youtube.com/vi/{video_id}/0.jpg",use_container_width=True)
         video_data = get_video_data(video_id)
         if video_data :
